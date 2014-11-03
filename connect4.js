@@ -125,13 +125,14 @@ GAMEBOARD.Gameboard.prototype.checkForWinner = function(x,y) { //remember bounda
         var count_O = 0;
         var count_X = 0;
         for (var inner=0; inner<4; ++inner) {
-            if (typeof this.innerStruct[x+outer+inner] === 'undefined' || typeof this.innerStruct[x+outer+inner][y+outer-inner] === 'undefined') {//change
+            if (typeof this.innerStruct[x+outer-inner] === 'undefined' ||
+                typeof this.innerStruct[x+outer-inner][y+outer-inner] === 'undefined') {
                 continue;
             }
-            else if (this.innerStruct[x+outer+inner][y+outer-inner].state == '*') {
+            else if (this.innerStruct[x+outer-inner][y+outer-inner].state == '*') {
                 break;
             }
-            else if (this.innerStruct[x+outer+inner][y+outer-inner].state == 'O') {
+            else if (this.innerStruct[x+outer-inner][y+outer-inner].state == 'O') {
                 count_O++;
             }
             else {
@@ -187,11 +188,8 @@ gameboard.placePiece('X',5);
 gameboard.placePiece('O',1);
 gameboard.placePiece('X',4);
 gameboard.placePiece('O',1);
-gameboard.placePiece('X',5);
-gameboard.placePiece('O',0);
-gameboard.placePiece('X',4);
-gameboard.placePiece('O',0);
 gameboard.placePiece('X',2);
+gameboard.placePiece('O',1);
 gameboard.printState();
 
 
