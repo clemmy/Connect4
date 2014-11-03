@@ -100,6 +100,31 @@ GAMEBOARD.Gameboard.prototype.checkForWinner = function(x,y) { //remember bounda
         var count_O = 0;
         var count_X = 0;
         for (var inner=0; inner<4; ++inner) {
+            if (typeof this.innerStruct[x-outer+inner] === 'undefined' ||
+                typeof this.innerStruct[x-outer+inner][y+outer-inner] === 'undefined') {
+                continue;
+            }
+            else if (this.innerStruct[x-outer+inner][y+outer-inner].state == '*') {
+                break;
+            }
+            else if (this.innerStruct[x-outer+inner][y+outer-inner].state == 'O') {
+                count_O++;
+            }
+            else {
+                count_X++;
+            }
+        }
+        if (count_O>=4)
+            return 'O';
+        else if (count_X>=4)
+            return 'X';
+    }
+
+    // check bottomLeftToRightTop diagonal
+    for (var outer=0; outer<4; ++outer) {
+        var count_O = 0;
+        var count_X = 0;
+        for (var inner=0; inner<4; ++inner) {
             if (typeof this.innerStruct[x+outer+inner] === 'undefined' || typeof this.innerStruct[x+outer+inner][y+outer-inner] === 'undefined') {//change
                 continue;
             }
@@ -118,9 +143,6 @@ GAMEBOARD.Gameboard.prototype.checkForWinner = function(x,y) { //remember bounda
         else if (count_X>=4)
             return 'X';
     }
-
-    // check bottomLeftToRightTop diagonal
-
 };
 
 /**
@@ -149,7 +171,7 @@ GAMEBOARD.Gameboard.prototype.placePiece = function(player, col) { //check col l
     else
         this.playerTurn = 'O';
 
-    console.log(this.checkForWinner(col, index));
+    console.log(this.checkForWinner(col, index)); //end program here (on winner)
 };
 
 var gameboard = new GAMEBOARD.Gameboard(7,5);
