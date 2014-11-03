@@ -34,7 +34,7 @@ Check whether a placed piece led to a victory.
 
 **Note that gameboard.placePiece(player,col) will return _undefined_ if nobody has won, _X_ if player X has won, and _O_ if player O has won.**
 
-## Exceptions Thrown
+## exceptions thrown
 
 - placing a piece on an out of range column
 - the same player placing pieces down twice in a row
