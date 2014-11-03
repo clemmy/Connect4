@@ -175,23 +175,3 @@ GAMEBOARD.Gameboard.prototype.placePiece = function(player, col) { //check col l
 
     return this.checkForWinner(col, index);
 };
-
-var gameboard = new GAMEBOARD.Gameboard(7,5);
-gameboard.placePiece('O',2);
-gameboard.placePiece('X',3);
-gameboard.placePiece('O',2);
-gameboard.placePiece('X',3);
-gameboard.placePiece('O',2);
-gameboard.placePiece('X',3);
-gameboard.placePiece('O',1);
-gameboard.placePiece('X',5);
-gameboard.placePiece('O',1);
-gameboard.placePiece('X',4);
-gameboard.placePiece('O',1);
-gameboard.placePiece('X',2);
-console.log(gameboard.placePiece('O',1));
-gameboard.printState();
-
-
-
-
