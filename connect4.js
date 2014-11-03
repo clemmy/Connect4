@@ -148,6 +148,7 @@ GAMEBOARD.Gameboard.prototype.checkForWinner = function(x,y) { //remember bounda
 
 /**
  * Places piece at specified column (0-based index)
+ * Returns 'O' if O has won, returns 'X' if X has won, and returns undefined otherwise
  * @param player 'X' or 'O'
  * @param col
  */
@@ -172,11 +173,10 @@ GAMEBOARD.Gameboard.prototype.placePiece = function(player, col) { //check col l
     else
         this.playerTurn = 'O';
 
-    console.log(this.checkForWinner(col, index)); //end program here (on winner)
+    return this.checkForWinner(col, index);
 };
 
 var gameboard = new GAMEBOARD.Gameboard(7,5);
-gameboard.printState();
 gameboard.placePiece('O',2);
 gameboard.placePiece('X',3);
 gameboard.placePiece('O',2);
@@ -189,7 +189,9 @@ gameboard.placePiece('O',1);
 gameboard.placePiece('X',4);
 gameboard.placePiece('O',1);
 gameboard.placePiece('X',2);
-gameboard.placePiece('O',1);
+console.log(gameboard.placePiece('O',1));
 gameboard.printState();
+
+
 
 
