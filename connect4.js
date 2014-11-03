@@ -73,7 +73,28 @@ GAMEBOARD.Gameboard.prototype.checkForWinner = function(x,y) { //remember bounda
             return 'X';
     }
     // check horizontal
-
+    for (var outer=0; outer<4; ++outer) {
+        var count_O = 0;
+        var count_X = 0;
+        for (var inner=0; inner<4; ++inner) {
+            if ((x+outer-inner)>=this.width || (x+outer-inner)<0) {
+                continue;
+            }
+            else if (this.innerStruct[x+outer-inner][y].state == '*') {
+                break;
+            }
+            else if (this.innerStruct[x+outer-inner][y].state == 'O') {
+                count_O++;
+            }
+            else {
+                count_X++;
+            }
+        }
+        if (count_O==4)
+            return 'O';
+        else if (count_X==4)
+            return 'X';
+    }
     // check topLeftToRightDown diagonal
 
     // check bottomLeftToRightTop diagonal
@@ -110,14 +131,19 @@ GAMEBOARD.Gameboard.prototype.placePiece = function(player, col) { //check col l
 };
 
 var gameboard = new GAMEBOARD.Gameboard(7,5);
-//gameboard.printState();
-//gameboard.placePiece('O',2);
-//gameboard.placePiece('X',3);
-//gameboard.placePiece('O',2);
-//gameboard.placePiece('X',3);
-//gameboard.placePiece('O',2);
-//gameboard.placePiece('X',3);
-//gameboard.placePiece('O',2);s
+gameboard.printState();
+gameboard.placePiece('O',2);
+gameboard.placePiece('X',3);
+gameboard.placePiece('O',2);
+gameboard.placePiece('X',3);
+gameboard.placePiece('O',2);
+gameboard.placePiece('X',3);
+gameboard.placePiece('O',1);
+gameboard.placePiece('X',6);
+gameboard.placePiece('O',1);
+gameboard.placePiece('X',4);
+gameboard.placePiece('O',1);
+gameboard.placePiece('X',5);
 gameboard.printState();
 
 
