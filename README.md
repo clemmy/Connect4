@@ -31,7 +31,7 @@ gameboard.placePiece('O',2);
 gameboard.placePiece('X',3);
 ```
 
-**Note that 'O' and 'X' represent the 2 players.
+**Note that 'O' and 'X' represent the 2 players.**
 
 Check whether a placed piece led to a victory.
 
