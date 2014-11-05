@@ -9,6 +9,9 @@ var GAMEBOARD = (function() { "use strict";
    * @constructor
    */
   GAMEBOARD.Gameboard = function(width, height) {
+
+      if (!(this instanceof GAMEBOARD.Gameboard)) return new GAMEBOARD.Gameboard(width, height);
+
       this.innerStruct = []; //inner struct is accessed by innerStruct[width][height]
       this.height = height;
       this.width = width;
